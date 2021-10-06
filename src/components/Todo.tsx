@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppDispatch } from '../hooks';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { EditText } from 'react-edit-text';
 import Checkbox from './Checkbox';
@@ -37,7 +37,7 @@ const StyledButton = styled.button`
 `;
 
 const TodoItem: React.FC<{ todo: Todo }> = ({ todo }) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   const handleCheckBox = (id: number) => {
     dispatch(createToggleTodoAction(id));
