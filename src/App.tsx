@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
+import AddTodo from './components/AddTodo';
+import Menu from './components/Menu';
+import TodoList from './components/TodoList';
 
-function App() {
+const Main = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Menu />
+      <Main>
+        <Switch>
+          <Route exact path='/'>
+            <AddTodo />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route path='/todos'>
+            <TodoList />
+          </Route>
+        </Switch>
+      </Main>
+    </Router>
   );
-}
+};
 
 export default App;
